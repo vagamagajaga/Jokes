@@ -8,7 +8,7 @@
 import Foundation
 
 protocol INetwork {
-    func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void)
+    func fetch(url: URL) async throws -> Data
 }
 
 private enum NetworkError: LocalizedError {
@@ -27,25 +27,14 @@ private enum NetworkError: LocalizedError {
 }
 
 struct NetworkService: INetwork {
-    func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void) {
-        let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            if error != nil {
-                handler(.failure(NetworkError.someError))
-                return
-            }
-            
-            if let response = response as? HTTPURLResponse,
-               response.statusCode < 200 || response.statusCode >= 300 {
-                handler(.failure(NetworkError.responseError(response.statusCode)))
-                return
-            }
-            
-            guard let data else { return }
-            handler(.success(data))
+    func fetch(url: URL) async throws -> Data {
+        let (data, response) = try await URLSession.shared.data(from: url)
+
+        guard let http = response as? HTTPURLResponse,
+              200..<300 ~= http.statusCode else {
+            throw NetworkError.someError
         }
-        
-        task.resume()
+
+        return data
     }
 }

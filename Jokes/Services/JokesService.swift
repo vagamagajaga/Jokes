@@ -15,7 +15,7 @@ enum JokesError: Error {
     }
 }
 
-final class JokesService {
+final actor JokesService {
     
     private let networkService: NetworkService = NetworkService()
     
@@ -26,46 +26,34 @@ final class JokesService {
         
         return url
     }
-        
-    func getJoke(handler: @escaping (Result<JokeModel, Error>) -> Void) {
-        networkService.fetch(url: jokeUrl) { result in
-            switch result {
-                case .success(let data):
-                if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
-                    handler(.success(decodedJoke.asJokeModel()))
-                }
-                
-                if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
-                    handler(.success(decodedJoke.asJokeModel()))
-                }
-                                    
-            case .failure:
-                handler(.failure(JokesError.noJokesAvailable))
+    
+    func getJoke() async throws -> JokeModel {        
+        do {
+            let data = try await networkService.fetch(url: jokeUrl)
+            if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
+                return decodedJoke.asJokeModel()
+            } else if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
+                return decodedJoke.asJokeModel()
+            } else {
+                throw JokesError.noJokesAvailable
             }
+        } catch {
+            throw error
         }
     }
     
-    func getJokes(count: Int, handler: @escaping (Result<[JokeModel], Error>) -> Void) {
+    func getJokes(count: Int) async throws -> [JokeModel] {
         var jokes: [JokeModel] = []
-        let group = DispatchGroup()
         
         for _ in 0..<count {
-            group.enter()
-            getJoke { result in
-                switch result {
-                case let .success(joke):
-                    jokes.append(joke)
-                    group.leave()
-                    
-                case .failure:
-                    handler(.failure(JokesError.noJokesAvailable))
-                    group.leave()
-                }
+            do {
+                let joke = try await getJoke()
+                jokes.append(joke)
+            } catch {
+                throw error
             }
         }
         
-        group.notify(queue: .main) {
-            handler(.success(jokes))
-        }
+        return jokes
     }
 }

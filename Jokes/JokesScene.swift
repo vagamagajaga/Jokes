@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JokesScene: View {
     
+    @MainActor
     @ObservedObject var viewModel: JokesViewModel
     
     var body: some View {
@@ -23,7 +24,9 @@ struct JokesScene: View {
         .padding(.bottom, 60)
         .padding(.horizontal, 24)
         .onAppear {
-            viewModel.getJokes()
+            Task {
+                await viewModel.getJokes()
+            }
         }
     }
 }
@@ -38,7 +41,9 @@ extension JokesScene {
         Button(
             buttonTitle()
         ) {
-            buttonAction()
+            Task {
+                await buttonAction()
+            }
         }
         .padding()
         .background(
@@ -55,9 +60,9 @@ extension JokesScene {
         viewModel.isLastJoke ? "Get new jokes" : "Next Joke"
     }
     
-    func buttonAction() {
+    func buttonAction() async {
         if viewModel.isLastJoke {
-            viewModel.refreshJokes()
+            await viewModel.refreshJokes()
         } else {
             viewModel.nextJoke()
         }

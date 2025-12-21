@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class JokesViewModel: ObservableObject {
     
     @Published var currentJoke: JokeModel?
@@ -30,24 +31,20 @@ final class JokesViewModel: ObservableObject {
         currentJoke = jokes[currentJokeIndex]
     }
     
-    func refreshJokes() {
+    func refreshJokes() async {
         if isLastJoke {
             currentJoke = nil
             currentJokeIndex = 0
-            getJokes()
+            await getJokes()
         }
     }
     
-    func getJokes() {
-        jokesService.getJokes(count: 5) { result in
-            switch result {
-            case .success(let jokes):
-                self.jokes = jokes
-                self.currentJoke = jokes.first
-                
-            case .failure(let error):
-                self.error = error
-            }
+    func getJokes() async {
+        do {
+            jokes = try await jokesService.getJokes(count: 5)
+            currentJoke = jokes.first
+        } catch {
+            self.error = error
         }
     }
 }
