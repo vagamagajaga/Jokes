@@ -11,30 +11,28 @@ protocol INetwork {
     func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void)
 }
 
-struct NetworkService: INetwork {
-    // MARK: - Enums
-    private enum NetworkError: LocalizedError {
-        case responseError(Int)
-        case someError
-        
-        var errorDescription: String? {
-            switch self {
-            case let .responseError(code):
-                return "Error \(code)"
-                
-            case .someError:
-                return "Undefined error"
-            }
+private enum NetworkError: LocalizedError {
+    case responseError(Int)
+    case someError
+    
+    var errorDescription: String? {
+        switch self {
+        case let .responseError(code):
+            return "Error \(code)"
+            
+        case .someError:
+            return "Undefined error"
         }
     }
-    
-    // MARK: - Methods
+}
+
+struct NetworkService: INetwork {
     func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void) {
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            if let error {
-                handler(.failure(error))
+            if error != nil {
+                handler(.failure(NetworkError.someError))
                 return
             }
             

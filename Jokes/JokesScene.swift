@@ -30,13 +30,8 @@ struct JokesScene: View {
 
 extension JokesScene {
     
-    @ViewBuilder
     func jokeView() -> some View {
-        if let joke = viewModel.currentJoke {
-            Text(joke)
-        } else {
-            Text("Loading...")
-        }
+        Text(jokeMessage())
     }
     
     func jokeButton() -> some View {
@@ -65,6 +60,16 @@ extension JokesScene {
             viewModel.refreshJokes()
         } else {
             viewModel.currentJokeIndex += 1
+        }
+    }
+    
+    func jokeMessage() -> String {
+        if let joke = viewModel.currentJoke {
+            joke
+        } else if let error = viewModel.error {
+            error.localizedDescription
+        } else {
+            "Loading..."
         }
     }
 }
