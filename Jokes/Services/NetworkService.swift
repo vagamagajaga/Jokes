@@ -42,7 +42,7 @@ struct NetworkService: INetwork {
                 return
             }
             
-            guard let data = data else { return }
+            guard let data else { return }
             handler(.success(data))
         }
         

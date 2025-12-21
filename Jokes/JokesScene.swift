@@ -52,20 +52,20 @@ extension JokesScene {
 
 extension JokesScene {
     func buttonTitle() -> String {
-        viewModel.currentJokeIndex == viewModel.jokes.count - 1 ? "Get new jokes" : "Next Joke"
+        viewModel.isLastJoke ? "Get new jokes" : "Next Joke"
     }
     
     func buttonAction() {
         if viewModel.isLastJoke {
             viewModel.refreshJokes()
         } else {
-            viewModel.currentJokeIndex += 1
+            viewModel.nextJoke()
         }
     }
     
     func jokeMessage() -> String {
         if let joke = viewModel.currentJoke {
-            joke
+            joke.description
         } else if let error = viewModel.error {
             error.localizedDescription
         } else {

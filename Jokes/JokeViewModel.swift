@@ -10,27 +10,29 @@ import Combine
 
 final class JokesViewModel: ObservableObject {
     
-    @Published var currentJokeIndex: Int = 0
-    @Published var jokes: [JokeModel] = []
+    @Published var currentJoke: JokeModel?
     @Published var error: Error?
     
+    private var jokes: [JokeModel] = []
+    private var currentJokeIndex: Int = 0
+
     private let jokesService = JokesService()
     
     init() {}
-    
-    var currentJoke: String? {
-        guard currentJokeIndex <= jokes.count - 1 else { return nil }
-            
-        return jokes[currentJokeIndex].description
-    }
     
     var isLastJoke: Bool {
         currentJokeIndex == jokes.count - 1
     }
     
+    func nextJoke() {
+        guard !isLastJoke else { return }
+        currentJokeIndex += 1
+        currentJoke = jokes[currentJokeIndex]
+    }
+    
     func refreshJokes() {
         if isLastJoke {
-            jokes = []
+            currentJoke = nil
             currentJokeIndex = 0
             getJokes()
         }
@@ -40,10 +42,11 @@ final class JokesViewModel: ObservableObject {
         jokesService.getJokes(count: 5) { result in
             switch result {
             case .success(let jokes):
-                    self.jokes = jokes
+                self.jokes = jokes
+                self.currentJoke = jokes.first
                 
             case .failure(let error):
-                    self.error = error
+                self.error = error
             }
         }
     }
