@@ -34,22 +34,36 @@
             endingLineNumber = "43"
             landmarkName = "getJoke(handler:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83C42375-CC4E-4905-B276-B8257B6B4FD6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Jokes/Services/NetworkService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "fetch(url:handler:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1A2E002E-779C-4F59-B76F-E1150FAC7030 - 7a9aa2f0de86e0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Jokes.JokesService.getJoke() async throws -&gt; Jokes.JokeModel"
+                  moduleName = "Jokes.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/Services/JokesService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43">
+               </Location>
+               <Location
+                  uuid = "1A2E002E-779C-4F59-B76F-E1150FAC7030 - d5f2611fda797cdb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for Jokes.JokesService.getJoke() async throws -&gt; Jokes.JokeModel"
+                  moduleName = "Jokes.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/Services/JokesService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,8 +76,8 @@
             filePath = "Jokes/Services/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "fetch(url:handler:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -13,15 +13,11 @@ protocol INetwork {
 
 private enum NetworkError: LocalizedError {
     case responseError(Int)
-    case someError
     
     var errorDescription: String? {
         switch self {
         case let .responseError(code):
             return "Error \(code)"
-            
-        case .someError:
-            return "Undefined error"
         }
     }
 }
@@ -31,8 +27,8 @@ struct NetworkService: INetwork {
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            if error != nil {
-                handler(.failure(NetworkError.someError))
+            if let error {
+                handler(.failure(error))
                 return
             }
             
