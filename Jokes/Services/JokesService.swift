@@ -15,9 +15,11 @@ enum JokesError: Error {
     }
 }
 
-final actor JokesService {
+actor JokesService {
     
-    private let networkService: NetworkService = NetworkService()
+    var responces: [JokeResponse] = []
+    
+    private let networkService = NetworkService()
     
     private var jokeUrl: URL {
         guard let url = URL(string: "https://sv443.net/jokeapi/v2/joke/Any") else {
@@ -27,13 +29,14 @@ final actor JokesService {
         return url
     }
     
-    func getJoke() async throws -> JokeModel {        
+    func getJoke() async throws -> JokeModel {
         do {
             let data = try await networkService.fetch(url: jokeUrl)
             if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
-                return decodedJoke.asJokeModel()
+                responces.append(decodedJoke)
+                return await decodedJoke.asJokeModel()
             } else if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
-                return decodedJoke.asJokeModel()
+                return await decodedJoke.asJokeModel()
             } else {
                 throw JokesError.noJokesAvailable
             }

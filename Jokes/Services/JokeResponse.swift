@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JokeResponse: Decodable {
+nonisolated struct JokeResponse: Decodable {
     let error: Bool
     let category, type, joke: String
     let id: Int
@@ -16,7 +16,7 @@ struct JokeResponse: Decodable {
     let flags: Flags
 }
 
-struct ComplexJokeResponse: Decodable {
+nonisolated struct ComplexJokeResponse: Decodable {
     let error: Bool
     let category, type, setup, delivery: String
     let id: Int

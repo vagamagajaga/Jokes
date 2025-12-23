@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol INetwork {
+protocol INetwork: Actor {
     func fetch(url: URL) async throws -> Data
 }
 
@@ -26,7 +26,7 @@ private enum NetworkError: LocalizedError {
     }
 }
 
-struct NetworkService: INetwork {
+actor NetworkService: INetwork {
     func fetch(url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)
 
