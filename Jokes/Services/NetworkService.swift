@@ -13,15 +13,11 @@ protocol INetwork {
 
 private enum NetworkError: LocalizedError {
     case responseError(Int)
-    case someError
     
     var errorDescription: String? {
         switch self {
         case let .responseError(code):
             return "Error \(code)"
-            
-        case .someError:
-            return "Undefined error"
         }
     }
 }
@@ -29,12 +25,12 @@ private enum NetworkError: LocalizedError {
 struct NetworkService: INetwork {
     func fetch(url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)
-
-        guard let http = response as? HTTPURLResponse,
-              200..<300 ~= http.statusCode else {
-            throw NetworkError.someError
+        
+        if let response = response as? HTTPURLResponse,
+           !(200..<300).contains(response.statusCode) {
+            throw NetworkError.responseError(response.statusCode)
         }
-
+        
         return data
     }
 }
