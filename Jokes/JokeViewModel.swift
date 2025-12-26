@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-@MainActor
 final class JokesViewModel: ObservableObject {
     
     @Published var currentJoke: JokeModel?
@@ -26,7 +25,7 @@ final class JokesViewModel: ObservableObject {
     }
     
     func nextJoke() {
-        guard !isLastJoke else { return }
+        guard !isLastJoke && !jokes.isEmpty else { return }
         currentJokeIndex += 1
         currentJoke = jokes[currentJokeIndex]
     }
