@@ -7,61 +7,45 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6CC126C7-DFF5-4580-A6D9-A5D1F8C47D30"
+            uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Jokes/Services/JokesService.swift"
+            filePath = "Jokes/JokesScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "getJokes(count:handler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1A2E002E-779C-4F59-B76F-E1150FAC7030"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Jokes/Services/JokesService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "getJoke(handler:)"
-            landmarkType = "7">
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "1A2E002E-779C-4F59-B76F-E1150FAC7030 - 7a9aa2f0de86e0f9"
+                  uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C - fd7e4d3e5d8e7983"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for Jokes.JokesService.getJoke() async throws -&gt; Jokes.JokeModel"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #2 () -&gt; () in Jokes.JokesScene.body.getter : some"
                   moduleName = "Jokes.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/Services/JokesService.swift"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokesScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27">
                </Location>
                <Location
-                  uuid = "1A2E002E-779C-4F59-B76F-E1150FAC7030 - d5f2611fda797cdb"
+                  uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C - 8371e0c7cf6eb998"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for Jokes.JokesService.getJoke() async throws -&gt; Jokes.JokeModel"
+                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #2 () -&gt; () in Jokes.JokesScene.body.getter : some"
                   moduleName = "Jokes.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/Services/JokesService.swift"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokesScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -69,17 +53,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "516D0352-6920-470D-A917-94C329135D7B"
+            uuid = "80CB5D7F-6962-4175-B6FC-D87570DF1256"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Jokes/Services/NetworkService.swift"
+            filePath = "Jokes/JokeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "fetch(url:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "setJokes()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jokes/JokeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "setJokes()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - e98b21d6c15af5f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
+                  moduleName = "Jokes.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43">
+               </Location>
+               <Location
+                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - 9a99e3e57df31ee1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
+                  moduleName = "Jokes.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43">
+               </Location>
+               <Location
+                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - 827ac2c4883b9bf6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
+                  moduleName = "Jokes.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

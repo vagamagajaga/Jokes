@@ -8,14 +8,14 @@
 import Foundation
 
 enum JokesError: Error {
-    case noJokesAvailable
+    case decodingError
     
     var localizedDescription: String {
-        "No jokes anymore"
+        "Wrong joke format provided"
     }
 }
 
-final actor JokesService {
+final class JokesService {
     
     private let networkService: NetworkService = NetworkService()
     
@@ -27,18 +27,15 @@ final actor JokesService {
         return url
     }
     
-    func getJoke() async throws -> JokeModel {        
-        do {
-            let data = try await networkService.fetch(url: jokeUrl)
-            if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
-                return decodedJoke.asJokeModel()
-            } else if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
-                return decodedJoke.asJokeModel()
-            } else {
-                throw JokesError.noJokesAvailable
-            }
-        } catch {
-            throw error
+    func getJoke() async throws -> JokeModel {
+        let data = try await networkService.fetch(url: jokeUrl)
+        
+        if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
+            return decodedJoke.asJokeModel()
+        } else if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
+            return decodedJoke.asJokeModel()
+        } else {
+            throw JokesError.decodingError
         }
     }
     
@@ -46,12 +43,8 @@ final actor JokesService {
         var jokes: [JokeModel] = []
         
         for _ in 0..<count {
-            do {
-                let joke = try await getJoke()
-                jokes.append(joke)
-            } catch {
-                throw error
-            }
+            let joke = try await getJoke()
+            jokes.append(joke)
         }
         
         return jokes

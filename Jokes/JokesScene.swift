@@ -25,7 +25,7 @@ struct JokesScene: View {
         .padding(.horizontal, 24)
         .onAppear {
             Task {
-                await viewModel.getJokes()
+                await viewModel.setJokes()
             }
         }
     }
