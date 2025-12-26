@@ -8,11 +8,7 @@
 import Foundation
 
 enum JokesError: Error {
-    case noJokesAvailable
-    
-    var localizedDescription: String {
-        "No jokes anymore"
-    }
+    case decodingError
 }
 
 final class JokesService {
@@ -33,20 +29,21 @@ final class JokesService {
                 case .success(let data):
                 if let decodedJoke = try? JSONDecoder().decode(JokeResponse.self, from: data) {
                     handler(.success(decodedJoke.asJokeModel()))
-                }
-                
-                if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
+                } else if let decodedJoke = try? JSONDecoder().decode(ComplexJokeResponse.self, from: data) {
                     handler(.success(decodedJoke.asJokeModel()))
+                } else {
+                    handler(.failure(JokesError.decodingError))
                 }
                                     
-            case .failure:
-                handler(.failure(JokesError.noJokesAvailable))
+            case let .failure(error):
+                handler(.failure(error))
             }
         }
     }
     
     func getJokes(count: Int, handler: @escaping (Result<[JokeModel], Error>) -> Void) {
         var jokes: [JokeModel] = []
+        var jokeError: Error? = nil
         let group = DispatchGroup()
         
         for _ in 0..<count {
@@ -57,15 +54,19 @@ final class JokesService {
                     jokes.append(joke)
                     group.leave()
                     
-                case .failure:
-                    handler(.failure(JokesError.noJokesAvailable))
+                case let .failure(error):
+                    jokeError = error
                     group.leave()
                 }
             }
         }
         
         group.notify(queue: .main) {
-            handler(.success(jokes))
+            if let jokeError {
+                handler(.failure(jokeError))
+            } else {
+                handler(.success(jokes))
+            }
         }
     }
 }
