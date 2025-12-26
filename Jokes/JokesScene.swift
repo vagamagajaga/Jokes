@@ -9,7 +9,6 @@ import SwiftUI
 
 struct JokesScene: View {
     
-    @MainActor
     @ObservedObject var viewModel: JokesViewModel
     
     var body: some View {

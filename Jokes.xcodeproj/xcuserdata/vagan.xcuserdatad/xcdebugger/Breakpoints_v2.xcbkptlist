@@ -8,14 +8,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jokes/JokesScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -47,81 +47,33 @@
                   startingLineNumber = "27"
                   endingLineNumber = "27">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "80CB5D7F-6962-4175-B6FC-D87570DF1256"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Jokes/JokeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "setJokes()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Jokes/JokeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "setJokes()"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - e98b21d6c15af5f4"
+                  uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C - acec890601815dd9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
+                  symbolName = "closure #2 () -&gt; () in Jokes.JokesScene.body.getter : some"
                   moduleName = "Jokes.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokesScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
                </Location>
                <Location
-                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - 9a99e3e57df31ee1"
+                  uuid = "886F1DB7-7926-4D12-8C4D-6871F8C2DD4C - d515da9ebe01c789"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
+                  symbolName = "closure #1 () async -&gt; () in closure #2 () -&gt; () in Jokes.JokesScene.body.getter : some"
                   moduleName = "Jokes.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
+                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokesScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-               <Location
-                  uuid = "B7FA953E-E202-45B4-96A0-8B4ABDB7E9DC - 827ac2c4883b9bf6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Jokes.JokesViewModel.getJokes() async -&gt; ()"
-                  moduleName = "Jokes.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vagan/Documents/Repo&apos;s/Jokes/Jokes/JokeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
                </Location>
             </Locations>
          </BreakpointContent>
