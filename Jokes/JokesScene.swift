@@ -42,9 +42,7 @@ extension JokesScene {
         }
         .padding()
         .background(
-            Color.gray
-                .clipShape(.capsule)
-            
+            Color.gray.clipShape(.capsule)
         )
         .foregroundStyle(.white)
     }
