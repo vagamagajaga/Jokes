@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class JokesViewModel: ObservableObject {
     
     @Published var currentJoke: JokeModel?
