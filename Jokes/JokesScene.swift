@@ -48,7 +48,6 @@ extension JokesScene {
         .background(
             Color.gray
                 .clipShape(.capsule)
-            
         )
         .foregroundStyle(.white)
     }
