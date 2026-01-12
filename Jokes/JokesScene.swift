@@ -41,16 +41,19 @@ extension JokesScene {
             buttonAction()
         }
         .padding()
-        .background(
-            Color.gray.clipShape(.capsule)
-        )
+        .background(Color.gray.clipShape(.capsule))
         .foregroundStyle(.white)
+        .disabled(viewModel.isLoading)
     }
 }
 
 extension JokesScene {
     func buttonTitle() -> String {
-        viewModel.isLastJoke ? "Get new jokes" : "Next Joke"
+        if viewModel.isLoading {
+            "Waiting for joke..."
+        } else {
+            viewModel.isLastJoke ? "Get new jokes" : "Next joke"
+        }
     }
     
     func buttonAction() {
@@ -62,13 +65,7 @@ extension JokesScene {
     }
     
     func jokeMessage() -> String {
-        if let joke = viewModel.currentJoke {
-            joke.description
-        } else if let error = viewModel.error {
-            error.localizedDescription
-        } else {
-            "Loading..."
-        }
+        viewModel.currentJoke?.description ?? viewModel.error?.localizedDescription ?? "Loading..."
     }
 }
 

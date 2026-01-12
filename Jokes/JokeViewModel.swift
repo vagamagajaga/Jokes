@@ -11,6 +11,7 @@ import Combine
 final class JokesViewModel: ObservableObject {
     
     @Published var currentJoke: JokeModel?
+    @Published var isLoading: Bool = true
     @Published var error: Error?
     
     private var jokes: [JokeModel] = []
@@ -32,6 +33,7 @@ final class JokesViewModel: ObservableObject {
     
     func refreshJokes() {
         if isLastJoke {
+            isLoading = true
             currentJoke = nil
             currentJokeIndex = 0
             getJokes()
@@ -42,10 +44,12 @@ final class JokesViewModel: ObservableObject {
         jokesService.getJokes(count: 5) { result in
             switch result {
             case .success(let jokes):
+                self.isLoading = false
                 self.jokes = jokes
                 self.currentJoke = jokes.first
                 
             case .failure(let error):
+                self.isLoading = false
                 self.error = error
             }
         }
