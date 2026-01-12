@@ -27,7 +27,7 @@ struct NetworkService: INetwork {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         if let response = response as? HTTPURLResponse,
-           !(200..<300).contains(response.statusCode) {
+           response.statusCode < 200 || response.statusCode >= 300 {
             throw NetworkError.responseError(response.statusCode)
         }
         
